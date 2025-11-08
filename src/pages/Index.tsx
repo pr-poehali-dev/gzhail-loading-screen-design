@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
+import RegistrationForm from '@/components/RegistrationForm';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   if (isLoading) {
     return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
+  }
+
+  if (!isRegistered) {
+    return <RegistrationForm onComplete={() => setIsRegistered(true)} />;
   }
 
   return (
